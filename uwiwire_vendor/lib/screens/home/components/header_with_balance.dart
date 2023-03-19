@@ -18,14 +18,14 @@ class HeaderWithBalance extends StatelessWidget {
 
     return Container(
       //
-      height: size.height * 0.2,
+      height: size.height * 0.15,
       color: kPrimaryColor,
       //
       child: Stack(
         children: <Widget>[
           Container(
             //
-            height: size.height * 0.2 - 27,
+            height: size.height * 0.15 - 27,
             width: size.width,
             decoration: const BoxDecoration(color: Colors.purple),
             //

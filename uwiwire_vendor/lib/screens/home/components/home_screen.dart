@@ -8,7 +8,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Total width and height of screen
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: kPrimaryColor,
       appBar: buildAppBar(),
       body: const Body(),
       bottomNavigationBar: Container(
@@ -16,9 +19,9 @@ class HomeScreen extends StatelessWidget {
             left: kDefaultPadding * 2,
             right: kDefaultPadding * 2,
           ),
-          height: 80,
+          height: size.height * 0.1,
           decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 194, 204, 210),
+            color: kGrey,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,6 +38,10 @@ class HomeScreen extends StatelessWidget {
     return AppBar(
       elevation: 0,
       backgroundColor: kPrimaryColor,
+      leading: const Text('Hamburger'),
+      actions: const <Widget>[
+        Text('UWI WIRE'),
+      ],
     );
   }
 }
