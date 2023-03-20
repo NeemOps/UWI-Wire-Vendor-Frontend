@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/screens/home/components/home_screen.dart';
+import 'package:uwiwire_vendor/screens/home/components/login/login_screen.dart';
 
 import 'constants.dart';
 
@@ -18,7 +19,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kBackgroundColor,
         primaryColor: kPrimaryColor,
       ),
-      home: const HomeScreen(),
+      home: LoginScreen(),
+      routes: {
+        '/home': (context) => const HomeScreen(),
+      },
     );
   }
 }
