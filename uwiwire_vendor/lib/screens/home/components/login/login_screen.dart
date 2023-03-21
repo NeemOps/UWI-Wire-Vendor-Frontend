@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/constants.dart';
 
+import '../../../../oop/authentication/_login_command.dart';
+import 'login_button.dart';
 import 'login_form.dart';
 
 class LoginScreen extends StatelessWidget {
-  LoginScreen({super.key});
-  final TextEditingController usernameController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
+  LoginCommand loginCommand;
+
+  LoginScreen({super.key, required this.loginCommand});
+  static final TextEditingController usernameController =
+      TextEditingController();
+
+  static final TextEditingController passwordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +56,7 @@ class LoginScreen extends StatelessWidget {
                 LoginForm(
                   controller: usernameController,
                   text: 'Username',
-                  textInputType: TextInputType.name,
+                  textInputType: TextInputType.emailAddress,
                   obscure: false,
                 ),
 
@@ -63,6 +70,12 @@ class LoginScreen extends StatelessWidget {
                   textInputType: TextInputType.text,
                   obscure: true,
                 ),
+
+                // Space
+                const SizedBox(height: 7),
+
+                // Log In Button
+                LoginButton(loginCommand: loginCommand),
               ],
             ),
           ),

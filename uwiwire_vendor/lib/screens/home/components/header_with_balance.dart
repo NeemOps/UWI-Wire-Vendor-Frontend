@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/classes/_account.dart';
+import 'package:uwiwire_vendor/oop/_account.dart';
 import 'package:uwiwire_vendor/constants.dart';
 
 class HeaderWithBalance extends StatelessWidget {
