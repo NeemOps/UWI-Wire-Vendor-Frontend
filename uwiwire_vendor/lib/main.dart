@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 // import 'package:http/http.dart' as http;
 
 import 'package:uwiwire_vendor/screens/home/components/home_screen.dart';
-import 'package:uwiwire_vendor/screens/home/components/login/login_screen.dart';
+import 'package:uwiwire_vendor/screens/home/components/login_screen.dart';
 
 // Authentication Files
 import 'package:uwiwire_vendor/oop/authentication/_authentication_controller.dart';

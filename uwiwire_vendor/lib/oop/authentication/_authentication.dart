@@ -2,7 +2,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/screens/home/components/login/login_screen.dart';
+import 'package:uwiwire_vendor/screens/home/components/login_screen.dart';
 
 class Authentication extends StatefulWidget {
   const Authentication({super.key});
@@ -11,11 +11,11 @@ class Authentication extends StatefulWidget {
   State<Authentication> createState() => _AuthenticationState();
 
   Future<void> login() async {
-    String email = LoginScreen.usernameController.text;
-    String password = LoginScreen.passwordController.text;
+    String email = LoginScreen.getUsername();
+    String password = LoginScreen.getPassword();
 
     const uri =
-        'https://neemops-uwiwirebackend-hmhcdhw9sw1.ws-us90.gitpod.io/api/v1/auth/users';
+        'https://8080-neemops-uwiwirebackend-hmhcdhw9sw1.ws-us90.gitpod.io/api/v1/auth/users';
 
     debugPrint(email);
     debugPrint(password);
@@ -25,9 +25,12 @@ class Authentication extends StatefulWidget {
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({"email": email, "password": password}),
     );
-    debugPrint('$response.statusCode');
+
+    var statusCode = response.statusCode;
     if (response.statusCode == 200) {
+      var token = json.decode(response.body)['access_token'];
       debugPrint('We outside');
+      debugPrint(token);
     } //
     else {
       debugPrint('Try Again');
@@ -36,7 +39,7 @@ class Authentication extends StatefulWidget {
 
   void logout() {
     // ignore: avoid_debugPrint
-    debugPrint('Pussy');
+    debugPrint('Bye');
   }
 }
 
