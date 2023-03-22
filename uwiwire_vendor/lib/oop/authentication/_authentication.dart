@@ -4,18 +4,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/screens/home/components/login_screen.dart';
 
-class Authentication extends StatefulWidget {
-  const Authentication({super.key});
-
-  @override
-  State<Authentication> createState() => _AuthenticationState();
-
-  Future<void> login() async {
+class Authentication {
+  // Login
+  Future<bool> login() async {
     String email = LoginScreen.getUsername();
     String password = LoginScreen.getPassword();
 
     const uri =
-        'https://8080-neemops-uwiwirebackend-hmhcdhw9sw1.ws-us90.gitpod.io/api/v1/auth/users';
+        'https://8080-neemops-uwiwirebackend-hmhcdhw9sw1.ws-us91.gitpod.io/api/v1/auth/users';
 
     debugPrint(email);
     debugPrint(password);
@@ -26,26 +22,19 @@ class Authentication extends StatefulWidget {
       body: jsonEncode({"email": email, "password": password}),
     );
 
-    var statusCode = response.statusCode;
     if (response.statusCode == 200) {
       var token = json.decode(response.body)['access_token'];
-      debugPrint('We outside');
       debugPrint(token);
+
+      return true;
     } //
     else {
-      debugPrint('Try Again');
+      return false;
     }
   }
 
   void logout() {
     // ignore: avoid_debugPrint
     debugPrint('Bye');
-  }
-}
-
-class _AuthenticationState extends State<Authentication> {
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

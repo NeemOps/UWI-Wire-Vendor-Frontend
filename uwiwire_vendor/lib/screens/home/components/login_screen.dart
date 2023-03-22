@@ -5,6 +5,7 @@ import '../../../oop/authentication/_login_command.dart';
 import 'login/login_button.dart';
 import 'login/login_form.dart';
 
+// ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
   LoginCommand loginCommand;
 

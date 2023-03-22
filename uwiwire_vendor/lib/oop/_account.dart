@@ -2,7 +2,7 @@ class Account {
   late String name;
   late String email;
 
-  int _balance = 20000;
+  final int _balance = 20000;
 
   int getBalance() {
     return _balance;

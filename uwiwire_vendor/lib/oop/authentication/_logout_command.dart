@@ -6,7 +6,7 @@ class LogoutCommand implements AuthenticationCommand {
   late Authentication authInstance;
 
   LogoutCommand() {
-    authInstance = const Authentication();
+    authInstance = Authentication();
   }
 
   @override
