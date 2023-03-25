@@ -1,13 +1,13 @@
 import '_authentication_command.dart';
 
 class AuthenticationController {
-  late AuthenticationCommand command;
+  late AuthenticationCommand _command;
 
   void setCommand(AuthenticationCommand command) {
-    this.command = command;
+    _command = command;
   }
 
-  void pressButton() {
-    command.execute();
+  Future<String> authenticate() async {
+    return await _command.execute();
   }
 }

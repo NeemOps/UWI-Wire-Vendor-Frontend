@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/oop/_account.dart';
+// import 'package:uwiwire_vendor/oop/_account_info.dart';
 import 'package:uwiwire_vendor/constants.dart';
 
 class HeaderWithBalance extends StatelessWidget {
@@ -13,8 +13,8 @@ class HeaderWithBalance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get Account Balance
-    Account acc = Account();
-    var bal = acc.getBalance();
+    // AccountInfo acc = AccountInfo(balance: 0, email: '', name: '');
+    // var bal = acc.getBalance();
 
     return Container(
       //
@@ -39,7 +39,7 @@ class HeaderWithBalance extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                 ),
-                Text('$bal'),
+                // Text('$bal'),
               ],
             ),
           ),

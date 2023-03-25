@@ -15,7 +15,7 @@ class Body extends StatelessWidget {
         HeaderWithBalance(size: size),
         SizedBox(
           // Container height and width
-          height: size.height * 0.64,
+          height: size.height * 0.6,
           width: size.width,
 
           child: Stack(

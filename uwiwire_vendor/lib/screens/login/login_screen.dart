@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/constants.dart';
 
-import '../../../oop/authentication/_login_command.dart';
-import 'login/login_button.dart';
-import 'login/login_form.dart';
+// Components
+import 'package:uwiwire_vendor/constants.dart';
+import 'components/login_button.dart';
+import 'components/login_form.dart';
 
 // ignore: must_be_immutable
 class LoginScreen extends StatelessWidget {
-  LoginCommand loginCommand;
-
-  LoginScreen({super.key, required this.loginCommand});
-
   static final TextEditingController _usernameController =
       TextEditingController();
   static final TextEditingController _passwordController =
       TextEditingController();
+
+  const LoginScreen({super.key});
 
   static String getUsername() {
     return _usernameController.text;
@@ -84,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 7),
 
                 // Log In Button
-                LoginButton(loginCommand: loginCommand),
+                LoginButton(),
               ],
             ),
           ),
