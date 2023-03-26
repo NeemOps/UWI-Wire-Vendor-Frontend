@@ -8,7 +8,7 @@ class AccountInfo {
   static late final dynamic walletAddr;
 
   Future<void> getAccountInfo(String accessToken) async {
-    const uri = 'https://uwi-wire.herokuapp.com/api/v1/users/me';
+    const uri = 'https://uwi-wire.herokuapp.com/api/v1/me';
 
     final response = await http.get(
       Uri.parse(uri),
