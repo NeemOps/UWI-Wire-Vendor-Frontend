@@ -5,15 +5,17 @@ import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/screens/login/login_screen.dart';
 
 class Authentication {
+  static late final String _accessToken;
+  String getAccessToken() {
+    return _accessToken;
+  }
+
   // Login
   Future<String?> login() async {
     String email = LoginScreen.getUsername();
     String password = LoginScreen.getPassword();
 
     const uri = 'https://uwi-wire.herokuapp.com/api/v1/auth/users';
-
-    debugPrint(email);
-    debugPrint(password);
 
     final response = await http.post(
       Uri.parse(uri),
@@ -23,10 +25,9 @@ class Authentication {
 
     if (response.statusCode == 200) {
       var token = json.decode(response.body)['access_token'];
-      debugPrint(token);
+      _accessToken = token;
       return token;
     } else {
-      debugPrint('not found');
       return null;
     }
   }

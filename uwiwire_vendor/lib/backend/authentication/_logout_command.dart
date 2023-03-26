@@ -1,4 +1,4 @@
-import 'package:uwiwire_vendor/oop/authentication/_authentication_command.dart';
+import 'package:uwiwire_vendor/backend/authentication/_authentication_command.dart';
 
 import '_authentication.dart';
 

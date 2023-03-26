@@ -1,26 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/constants.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+import 'components/account_screen.dart';
+import 'menu.dart';
+
+class NavScreen extends StatefulWidget {
+  const NavScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<NavScreen> createState() => _NavScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _NavScreenState extends State<NavScreen> {
   int _currentIndex = 0;
 
-  List<Widget> _bodyOptions = <Widget>[
-    Text('Home'),
-    Text('Bills'),
-    Text('Account'),
+  final List<Widget> _bodyOptions = <Widget>[
+    const Text('Home'),
+    const Text('Bills'),
+    const AccountScreen(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
+
+      // Sidebar
+      drawer: const Menu(),
 
       // App Bar
       appBar: buildAppBar(),
@@ -40,10 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
     return AppBar(
       elevation: 0,
       backgroundColor: Colors.pink,
-      leading: IconButton(
-        icon: const Icon(Icons.menu),
-        onPressed: () {},
-      ),
       actions: const <Widget>[
         Text('UWI WIRE'),
       ],

@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-// import 'package:uwiwire_vendor/oop/_account_info.dart';
-import 'package:uwiwire_vendor/screens/home/home_screen.dart';
-// import 'package:uwiwire_vendor/screens/home/components/login_screen.dart';
+import 'package:uwiwire_vendor/screens/home/nav_screen.dart';
 
 import 'constants.dart';
+import 'screens/login/login_screen.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
-// ignore: must_be_immutable
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -21,10 +19,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: kBackgroundColor,
         primaryColor: kPrimaryColor,
       ),
-      // home: LoginScreen(),
-      home: const HomeScreen(),
+      home: const LoginScreen(),
+      // home: const NavScreen(),
       routes: {
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => const NavScreen(),
       },
     );
   }

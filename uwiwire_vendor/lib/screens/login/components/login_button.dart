@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/oop/_account_info.dart';
 
 // Authentication
-import '../../../oop/authentication/_authentication_controller.dart';
-import '../../../oop/authentication/_login_command.dart';
+import '../../../backend/authentication/_authentication_controller.dart';
+import '../../../backend/authentication/_login_command.dart';
 
-// ignore: must_be_immutable
-class LoginButton extends StatelessWidget {
+class LoginButton extends StatefulWidget {
+  const LoginButton({super.key});
+
+  @override
+  State<LoginButton> createState() => _LoginButtonState();
+}
+
+class _LoginButtonState extends State<LoginButton> {
   final AuthenticationController _authController = AuthenticationController();
-  LoginCommand loginCommand = LoginCommand();
 
-  LoginButton({super.key});
+  LoginCommand loginCommand = LoginCommand();
 
   late String? accessToken;
 
@@ -20,16 +24,12 @@ class LoginButton extends StatelessWidget {
       // When Pressed
       onTap: () async {
         _authController.setCommand(loginCommand);
-        accessToken = await _authController.authenticate();
 
-        if (accessToken == null) {
-          const Text('Login unsuccessful');
-        } else {
+        try {
+          accessToken = await _authController.authenticate();
           Navigator.pushNamed(context, '/home');
-
-          AccountInfo accountInfo = AccountInfo();
-          accountInfo.getAccountInfo(accessToken!);
-          debugPrint(accountInfo.getName());
+        } catch (e) {
+          print('Error: $e');
         }
       },
       child: Container(
@@ -43,7 +43,6 @@ class LoginButton extends StatelessWidget {
             style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
-              // fontSize: 16,
             ),
           ),
         ),
