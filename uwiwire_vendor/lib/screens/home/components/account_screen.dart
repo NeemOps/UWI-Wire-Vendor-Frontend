@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uwiwire_vendor/backend/authentication/_authentication.dart';
 
 import '../../../backend/_account_info.dart';
 
@@ -13,32 +12,11 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  final Authentication _authInstance = Authentication();
   final AccountInfo _accountInfo = AccountInfo();
-
-  late String _accessToken;
-
-  Future<void> printAccountInfo() async {
-    setState(() {
-      _accessToken = _authInstance.getAccessToken();
-    });
-
-    try {
-      // Call the getAccountInfo method to fetch the account information
-      await _accountInfo.getAccountInfo(_accessToken);
-
-      // Print the account information
-      print('Name: ${_accountInfo.getName()}');
-      print('Email: ${_accountInfo.getEmail()}');
-      print('Wallet Address: ${_accountInfo.getWalletAddress()}');
-    } catch (e) {
-      print('Error: $e');
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
-    printAccountInfo();
+    // _getAccountInfo();
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -52,11 +30,10 @@ class _AccountScreenState extends State<AccountScreen> {
           ),
 
           // Vendor Name and Email
-          const Text('Vendor Name'),
-          const Text('johnDoe@gmail.com'),
+          Text(_accountInfo.getName()),
+          Text(_accountInfo.getEmail()),
         ],
       ),
-      // child: Text(_accessToken),
     );
   }
 }

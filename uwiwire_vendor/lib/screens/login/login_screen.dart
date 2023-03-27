@@ -25,65 +25,82 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Container(
-            width: double.infinity,
-            padding: const EdgeInsets.all(15.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  child: const Text(
-                    'UWI Wire',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
+      backgroundColor: kPrimaryColor,
+      body: Center(
+        child: SingleChildScrollView(
+          child: SafeArea(
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(15.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: const Text.rich(
+                      TextSpan(
+                        text: 'UWI',
+                        style: TextStyle(
+                          fontSize: 35,
+                          fontWeight: FontWeight.bold,
+                          color: kBackgroundColor,
+                        ),
+                        children: <TextSpan>[
+                          TextSpan(
+                            text: 'wire',
+                            style: TextStyle(
+                              fontSize: 35,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
 
-                // Space
-                const SizedBox(height: 50),
+                  // Space
+                  const SizedBox(height: 50),
 
-                const Text(
-                  'Login',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w500,
+                  Container(
+                    margin: const EdgeInsets.symmetric(horizontal: 25),
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ),
-                ),
 
-                // Space
-                const SizedBox(height: 15),
+                  // Space
+                  const SizedBox(height: 15),
 
-                // Username Box
-                LoginForm(
-                  controller: _usernameController,
-                  text: 'Username',
-                  textInputType: TextInputType.emailAddress,
-                  obscure: false,
-                ),
+                  // Username Box
+                  LoginForm(
+                    controller: _usernameController,
+                    text: 'Username',
+                    textInputType: TextInputType.emailAddress,
+                    obscure: false,
+                  ),
 
-                // Space
-                const SizedBox(height: 7),
+                  // Space
+                  const SizedBox(height: 7),
 
-                // Password Box
-                LoginForm(
-                  controller: _passwordController,
-                  text: 'Password',
-                  textInputType: TextInputType.text,
-                  obscure: true,
-                ),
+                  // Password Box
+                  LoginForm(
+                    controller: _passwordController,
+                    text: 'Password',
+                    textInputType: TextInputType.text,
+                    obscure: true,
+                  ),
 
-                // Space
-                const SizedBox(height: 7),
+                  // Space
+                  const SizedBox(height: 7),
 
-                // Log In Button
-                const LoginButton(),
-              ],
+                  // Log In Button
+                  const LoginButton(),
+                ],
+              ),
             ),
           ),
         ),

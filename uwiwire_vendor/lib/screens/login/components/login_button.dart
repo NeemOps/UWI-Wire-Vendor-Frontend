@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // Authentication
 import '../../../backend/authentication/_authentication_controller.dart';
 import '../../../backend/authentication/_login_command.dart';
+import '../../../constants.dart';
 
 class LoginButton extends StatefulWidget {
   const LoginButton({super.key});
@@ -27,6 +28,7 @@ class _LoginButtonState extends State<LoginButton> {
 
         try {
           accessToken = await _authController.authenticate();
+          // ignore: use_build_context_synchronously
           Navigator.pushNamed(context, '/home');
         } catch (e) {
           print('Error: $e');
@@ -36,7 +38,7 @@ class _LoginButtonState extends State<LoginButton> {
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
         decoration: BoxDecoration(
-            color: Colors.black, borderRadius: BorderRadius.circular(8)),
+            color: kBackgroundColor, borderRadius: BorderRadius.circular(8)),
         child: const Center(
           child: Text(
             'Sign In',

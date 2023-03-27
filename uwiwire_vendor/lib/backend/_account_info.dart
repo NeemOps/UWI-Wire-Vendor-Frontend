@@ -2,13 +2,14 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class AccountInfo {
-  static late final String fName;
-  static late final String lName;
-  static late final String email;
-  static late final dynamic walletAddr;
+  static String fName = '';
+  static String lName = '';
+  static String email = '';
+  static dynamic balance = 0;
+  static dynamic walletAddr = 0;
 
   Future<void> getAccountInfo(String accessToken) async {
-    const uri = 'https://uwi-wire.herokuapp.com/api/v1/me';
+    const uri = 'https://uwi-wire.herokuapp.com/api/v1/user/identify';
 
     final response = await http.get(
       Uri.parse(uri),
@@ -19,13 +20,11 @@ class AccountInfo {
       final decoded = jsonDecode(response.body);
 
       fName = decoded['fname'];
-      print(fName);
       lName = decoded['lname'];
-      print(lName);
       email = decoded['email'];
-      print(email);
+
       walletAddr = decoded['walletAddr'];
-      print(walletAddr);
+      balance = decoded['balance'];
     } else {
       throw Exception('Failed to load account information');
     }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:uwiwire_vendor/constants.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm(
@@ -16,14 +17,16 @@ class LoginForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 50,
+      // height: 50,
       padding: const EdgeInsets.symmetric(horizontal: 10),
+      margin: const EdgeInsets.symmetric(horizontal: 25),
       decoration: BoxDecoration(
+        border: Border.all(color: kBackgroundColor, width: 0.5),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(5),
+        borderRadius: BorderRadius.circular(6),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.4),
+            color: Colors.black.withOpacity(0.1),
             blurRadius: 10,
           ),
         ],

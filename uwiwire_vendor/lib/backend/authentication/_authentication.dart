@@ -4,6 +4,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/screens/login/login_screen.dart';
 
+import '../_account_info.dart';
+
 class Authentication {
   static late final String _accessToken;
   String getAccessToken() {
@@ -26,6 +28,11 @@ class Authentication {
     if (response.statusCode == 200) {
       var token = json.decode(response.body)['access_token'];
       _accessToken = token;
+
+      // Load Account info
+      final AccountInfo accountInfo = AccountInfo();
+      accountInfo.getAccountInfo(_accessToken);
+
       return token;
     } else {
       return null;
