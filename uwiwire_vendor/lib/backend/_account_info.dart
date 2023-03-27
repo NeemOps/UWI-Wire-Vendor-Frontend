@@ -2,11 +2,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class AccountInfo {
-  static String fName = '';
-  static String lName = '';
-  static String email = '';
-  static dynamic balance = 0;
-  static dynamic walletAddr = 0;
+  static String _fName = '';
+  static String _lName = '';
+  static String _email = '';
+  static dynamic _balance = 0;
+  static dynamic _walletAddr = 0;
 
   Future<void> getAccountInfo(String accessToken) async {
     const uri = 'https://uwi-wire.herokuapp.com/api/v1/user/identify';
@@ -19,26 +19,30 @@ class AccountInfo {
     if (response.statusCode == 200) {
       final decoded = jsonDecode(response.body);
 
-      fName = decoded['fname'];
-      lName = decoded['lname'];
-      email = decoded['email'];
+      _fName = decoded['fname'];
+      _lName = decoded['lname'];
+      _email = decoded['email'];
 
-      walletAddr = decoded['walletAddr'];
-      balance = decoded['balance'];
+      _walletAddr = decoded['walletAddr'];
+      _balance = decoded['balance'];
     } else {
       throw Exception('Failed to load account information');
     }
   }
 
   String getName() {
-    return '$fName $lName';
+    return '$_fName $_lName';
   }
 
   String getEmail() {
-    return email;
+    return _email;
   }
 
   dynamic getWalletAddress() {
-    return walletAddr;
+    return _walletAddr;
+  }
+
+  dynamic getBalance() {
+    return _balance;
   }
 }
