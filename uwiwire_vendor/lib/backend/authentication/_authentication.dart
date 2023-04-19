@@ -1,21 +1,19 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
 import 'package:uwiwire_vendor/screens/login/login_screen.dart';
 
+import '../../repository/keys.dart';
+import '../../repository/repository.dart';
 import '../_account_info.dart';
 
 class Authentication {
-  static late final String _accessToken;
-  String getAccessToken() {
-    return _accessToken;
-  }
+  Repository repo = Repository();
 
   // Login
-  Future<String?> login() async {
-    String email = LoginScreen.getUsername();
-    String password = LoginScreen.getPassword();
+  Future<void> login() async {
+    String email = LoginBody.getUsername();
+    String password = LoginBody.getPassword();
 
     const uri = 'https://uwi-wire.herokuapp.com/api/v1/auth/users';
 
@@ -27,20 +25,34 @@ class Authentication {
 
     if (response.statusCode == 200) {
       var token = json.decode(response.body)['access_token'];
-      _accessToken = token;
+
+      // Add Token to User Repository
+      repo.write(tokenKey, token);
 
       // Load Account info
       final AccountInfo accountInfo = AccountInfo();
-      accountInfo.getAccountInfo(_accessToken);
-
-      return token;
-    } else {
-      return null;
+      accountInfo.getAccountInfo(token);
     }
   }
 
-  void logout() {
-    // ignore: avoid_debugPrint
-    debugPrint('Bye');
+  // Logout
+  Future<void> logout() async {
+    await repo.clear();
+  }
+
+  Future<void> updateAddress() async {
+    String? addr = await repo.read(addrKey);
+    String? token = await repo.read(tokenKey);
+
+    const uri = 'https://uwi-wire.herokuapp.com/api/v1/user/update/address';
+
+    await http.put(
+      Uri.parse(uri),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer $token'
+      },
+      body: jsonEncode({"address": addr}),
+    );
   }
 }

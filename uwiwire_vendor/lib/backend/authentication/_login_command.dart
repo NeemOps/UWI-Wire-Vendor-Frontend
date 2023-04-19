@@ -1,5 +1,4 @@
-import 'package:uwiwire_vendor/backend/authentication/_authentication_command.dart';
-
+import '_authentication_command.dart';
 import '_authentication.dart';
 
 class LoginCommand implements AuthenticationCommand {
@@ -10,12 +9,7 @@ class LoginCommand implements AuthenticationCommand {
   }
 
   @override
-  Future<String> execute() async {
-    final result = await _authInstance.login();
-    if (result != null) {
-      return result;
-    } else {
-      throw Exception('Login failed');
-    }
+  Future<void> execute() async {
+    await _authInstance.login();
   }
 }

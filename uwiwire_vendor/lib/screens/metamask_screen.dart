@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:walletconnect_dart/walletconnect_dart.dart';
-import 'package:url_launcher/url_launcher_string.dart';
 
 class MetamaskScreen extends StatefulWidget {
   const MetamaskScreen({super.key});
